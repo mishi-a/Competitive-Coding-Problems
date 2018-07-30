@@ -28,6 +28,7 @@ void merge(int x,int y){	//	x and y are some tools (vertices)
 using namespace std;
 
 ll s[105],d[105],c[105],ans[105];
+set<pii> se;
 int main()
 {
   sync;
@@ -36,29 +37,49 @@ int main()
   for(int i=1;i<=m;i++)
   {
   	cin >> s[i] >> d[i] >> c[i];
+  	se.insert({s[i],i});
   	ans[d[i]] = m+1;
   }
-  for(int i=1;i<=m;i++)
+  for(int i=1;i<=n;i++)
   {
-  	int cnt = 0;
-  	for(int j=d[i]-1;j>=s[i];j--)
+  	if(se.size()==0)
+  		break;
+  	if(ans[i]!=0)
+  		continue;
+  	set<pii>::iterator itr = se.begin();
+  	int lDay = itr->FI;
+  	if(i<lDay)
+  		ans[i]=0;
+  	else
   	{
-  		if(ans[j]==0)
+  		int xam = 105;
+  		set<pii> :: iterator idx=se.end();
+  		while(itr!=se.end())
   		{
-  			ans[j]=i;
-  			cnt++;
+  			if(itr->FI>i)
+  				break;
+  			else
+  			{
+  				if(i<d[itr->SE] && d[itr->SE]<xam)
+  				{
+  					xam = d[itr->SE];
+  					idx = itr;
+  				}	
+  			}
+  			itr++;
   		}
-  		if(cnt==c[i])
-  			break;
+  		if(idx==se.end())
+  			continue;
+  		ans[i]=idx->SE;
+  		c[idx->SE]--;
+  		if(c[idx->SE]==0)
+  		  se.erase(idx);
   	}
-  	if(cnt!=c[i])
-  	{
-  		cout << i << endl;
-  		for(int i=1;i<=n;i++)
-  			cout << ans[i] << " ";
-  		cout << "-1" << endl;
-  		return 0;
-  	}
+  }
+  if(!se.empty())
+  {
+  	cout << "-1" << endl;
+  	return 0;
   }
   for(int i=1;i<=n;i++)
   	cout << ans[i] << " ";
