@@ -1,0 +1,153 @@
+/*************
+        Author - am10
+             ******************/
+#include<bits/stdc++.h>
+ 
+#define sync ios::sync_with_stdio(false)
+#define endl '\n'
+#define ll long long
+#define pb push_back
+#define PI acos(-1)
+#define pii pair <int,int>
+#define FI first
+#define SE second
+/*
+//D-S-U
+int root(int v){return par[v] < 0 ? v : (par[v] = root(par[v]));}
+void merge(int x,int y){	//	x and y are some tools (vertices)
+        if((x = root(x)) == (y = root(y))     return ;
+	if(par[y] < par[x])	// balancing the height of the tree
+		swap(x, y);
+	par[x] += par[y];
+	par[y] = x;
+}
+*/
+
+//**********MODULAR EXPONENTIATION******************/
+/*
+int power(int x, unsigned int y, int p)
+{
+    int res = 1;      // Initialize result
+ 
+    x = x % p;  // Update x if it is more than or 
+                // equal to p
+ 
+    while (y > 0)
+    {
+        // If y is odd, multiply x with result
+        if (y & 1)
+            res = (res*x) % p;
+ 
+        // y must be even now
+        y = y>>1; // y = y/2
+        x = (x*x) % p;  
+    }
+    return res;
+}
+*/
+using namespace std;
+vector <vector<int> > v(105,vector<int>(4));
+int n;
+int dp[105][30005];
+int p[105][30005];
+int solve(int start,int ctime)
+{
+  int res=0;
+  if(start>=n)
+    return 0;
+  if(dp[start][ctime]!=-1)
+    return dp[start][ctime];
+  else
+  {
+    if(ctime+v[start][0]<v[start][1])
+    {
+      int res1 = v[start][2]+solve(start+1,ctime+v[start][0]);
+      int res2 = solve(start+1,ctime);
+      if(res1>res2)
+      {
+        p[start][ctime]=1;
+        res = res1;
+      }
+      else
+      {
+        p[start][ctime]=0;
+        res=res2;
+      }
+    }
+    else
+    {
+      res = solve(start+1,ctime);
+      p[start][ctime]=0;
+    }
+  }
+  return (dp[start][ctime]=res);
+}
+bool acompare(vector<int>& a,vector<int>& b)
+{
+  if(a[1]<b[1])
+   return true;
+  else
+   return false;
+}
+int main()
+{
+  sync;
+  cin >> n;
+  memset(dp,-1,sizeof(dp));
+  memset(p,0,sizeof(p));
+  for(int i=0;i<n;i++)
+  {
+    cin >> v[i][0] >> v[i][1] >> v[i][2];
+    v[i][3] = i;
+  }
+
+  sort(v.begin(),v.begin()+n,acompare);  //cout << v[0][3] << v[1][3] << v[2][3] << endl;
+  //cout << v[0][0] << v[0][1] << v[0][2] << v[0][3] << endl;
+  int ans = solve(0,0);
+  cout << ans<< endl;
+  /*for(int i=0;i<=8;i++)
+  {
+    for(int j=0;j<=107;j++)
+    {
+      cout << p[i][j] << " " ;
+    }
+    cout << endl;
+  }*/
+  for(int i=0;i<n;i++)
+  {
+    vector <int> v1;
+    if(p[i][0]!=0)
+    {
+      int tot=v[i][2];
+      int idx = i+1;
+      int rdx =v[i][0] ;
+      v1.pb(v[i][3]);
+      while(idx<n)
+      {
+        if(p[idx][rdx]!=0)
+        {
+          tot+=v[idx][2];
+          v1.pb(v[idx][3]);
+          rdx+=v[idx][0];
+          idx++;
+          //cout << tot << endl;
+        }
+        else
+        {
+          idx++;
+        }
+        //cout << tot << " " << idx << " " << rdx << endl;
+      }
+      //cout << tot << " h" << i << endl;
+      if(tot == ans)
+      {
+        cout << v1.size() << endl;
+        for(int i=0;i<v1.size();i++)
+          cout << v1[i]+1 << " ";
+        return 0;
+      }
+    }
+  }
+  cout << "0" << endl;
+}
+

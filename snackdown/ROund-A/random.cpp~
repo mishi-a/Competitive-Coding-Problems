@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+ 
+#define sync ios::sync_with_stdio(false)
+#define endl '\n'
+#define ll long long
+#define pb push_back
+#define pii pair <int,int>
+
+using namespace std;
+
+int main()
+{
+  srand(time(NULL));
+  cout << "8" <<  endl;
+  for(int i=0;i<8;i++)
+  {
+    int x = 1000 + rand()%5;
+    cout << x << endl;
+    for(int j=0;j<x;j++)
+    {
+      int z = 1+rand()%100000;
+      cout << z << " ";
+    }
+    cout << " ";
+    cout << endl;
+  }
+}
+
