@@ -1,2 +1,2 @@
 # Competitive-Coding-Problems
-This directory just contains competitive coding problems solution from different platform.
+This directory contains competitive coding problem's solution from different platform.
