@@ -31,4 +31,14 @@ using namespace std;
 int main()
 {
   sync;
+  ll n;
+  cin >> n;
+  if(n%3 == 0)
+  {
+  	cout << n-2 << " " << 1 << " " << 1 << endl;
+  }
+  else
+  {
+  	cout << n-3 << " " << 1 << " " << 2 << endl;
+  }
 }

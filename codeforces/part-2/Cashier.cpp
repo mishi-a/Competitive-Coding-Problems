@@ -31,4 +31,38 @@ using namespace std;
 int main()
 {
   sync;
+  int n,m,a;
+  cin >> n >> m >> a;
+  int ans = 0;
+  int lastTime = -1;
+  if(n == 0)
+  {
+  	cout << m/a << endl;
+  	return 0;
+  }
+  for(int i=0;i<n;i++)
+  {
+  	int t,l;
+  	cin >> t >> l;
+  	if(i==0)
+  	{
+  		ans+=(t/a);
+  		lastTime = t+l;
+  		if( i == n-1)
+  		{
+  			ans+= (m-lastTime)/a;
+  		}
+  	}
+  	else if(i == n-1)
+  	{
+  		ans+= (t-lastTime)/a;
+  		ans += (m-(t+l))/a;
+  	}
+  	else
+  	{
+  		ans+=(t-lastTime)/a;
+  		lastTime = t+l;
+  	}
+  }
+  cout << ans << endl;
 }

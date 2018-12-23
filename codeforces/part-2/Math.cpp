@@ -31,4 +31,28 @@ using namespace std;
 int main()
 {
   sync;
+  ll n;
+  cin >> n;
+  ll ans = n,mun=0;
+  for(ll i=2;i<n;i++)
+  {
+  	ll ans1 = i,res=0;
+  	while(ans1<n)
+  	{
+  		//cerr << ans1 << endl;
+  		ans1 = ans1*ans1;
+  		res++;
+  	}
+  	//return 0;
+  	//cerr << ans1 << " " << res << endl;
+  	//return 0;
+  	if(ans1%n==0)
+  	{
+  		if((ans1/n)!=1)
+  			res++;
+  		cout << i << " " << res << endl;	
+  		return 0;
+  	}
+  }
+  cout << ans << " " << mun << endl;
 }

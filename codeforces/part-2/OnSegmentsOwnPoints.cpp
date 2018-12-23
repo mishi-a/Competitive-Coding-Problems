@@ -27,8 +27,25 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+int arr[105];
 int main()
 {
   sync;
+  int n,l1,r1;
+  cin >> n;
+  for(int i=0;i<n;i++)
+  {
+  	int l,r;
+  	cin >> l >> r;
+  	if(i == 0)
+  		l1=l,r1=r;
+  	else
+  		for(int i=l;i<r;i++)
+  			arr[i]=1;
+  }
+  int ans = 0;
+  for(int i=l1;i<r1;i++)
+  	if(arr[i] == 0)
+  		ans++;
+  cout << ans << endl;
 }

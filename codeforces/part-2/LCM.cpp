@@ -31,4 +31,19 @@ using namespace std;
 int main()
 {
   sync;
+  ll b;
+  cin >> b;
+  int ans = 0;
+  for(ll i=1;i*i<=b;i++)
+  {
+  	if(b%i == 0){
+  	if(i*i == b)
+  		ans++;
+  	else
+  	{
+  		ans+=2;
+  	}
+  }
+  }
+  cout << ans << endl;
 }

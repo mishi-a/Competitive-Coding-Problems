@@ -27,8 +27,36 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+ll arr[MAX+5],sum[MAX+5];
 int main()
 {
   sync;
+  ll n,t;
+  cin >> n >> t;
+  for(int i=0;i<n;i++)
+  	cin >> arr[i],sum[i]=arr[i];
+  for(int i=1;i<n;i++) sum[i]+=sum[i-1];
+  ll ans = (t/sum[n-1])*n;
+  ll rem = t%sum[n-1];
+  while(rem)
+  {
+    int flag = 0;ll tot=0,cnt=0;
+    vector<ll> v;
+    for(int i=0;i<n;i++)
+    {
+      if(rem-arr[i]>=0)
+      {
+        ans++,cnt++;
+        tot+=arr[i];
+        v.pb(tot);
+        flag = 1;
+        rem-=arr[i];
+      }
+    }
+    if(flag == 0)
+      break;
+    ans += (rem/tot)*cnt;
+    rem = rem%tot;
+  }
+  cout << ans << endl;
 }

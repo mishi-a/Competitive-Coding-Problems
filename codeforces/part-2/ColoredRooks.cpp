@@ -28,7 +28,42 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+vector <int> v[105];
+int arr[105],n;
+int cur;
+map<pii,int> mp;
+void print(int idx)
+{
+	{
+		int ans = v[idx].size();
+		cout << ans+1 << endl;
+		cout << 1+(idx-1) << " " << n-(idx-1) << endl; 
+		for(int i=0;i<v[idx].size();i++)
+		{
+			cout << v[idx][i]<< " " << n-(idx-1)<< endl;
+			cur++;
+		}
+	}
+}
 int main()
 {
   sync;
+  int m;
+  cin >> n >> m;
+  cur = n+1;
+  for(int i=0;i<m;i++)
+  {
+  	int a,b;
+  	cin >> a >> b;
+  	v[a].pb(cur);
+  	v[b].pb(cur);
+  	cur++;
+  	//arr[min(a,b)]++;
+  }
+  //cerr << v[2].size() << endl;
+  for(int i=1;i<=n;i++)
+  {
+  	print(i);
+  }
+
 }

@@ -31,4 +31,27 @@ using namespace std;
 int main()
 {
   sync;
+  ll n;
+  cin >> n;
+  ll res = n;
+  int cnt = 0;
+  while(res!=0)
+    cnt++,res/=10;
+  //cout << cnt << endl;
+  ll low = pow(10,cnt-1);
+  low--;
+  //cout << low << endl;
+  ll high = n-low;
+  ll sum = 0;
+  while(low!=0)
+  {
+    sum+=low%10;
+    low/=10;
+  }
+  while(high!=0)
+  {
+    sum+=high%10;
+    high/=10;
+  }
+  cout << sum << endl;
 }

@@ -31,4 +31,21 @@ using namespace std;
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+  int cnt = 0;
+  for(int i=0;i<s.size();i++)
+  	if(s[i] == '8')
+  		cnt++;
+  for(int i=cnt;i>0;i--)
+  {
+  	if(i <= (s.size()-i)/10)
+  	{
+  		cout << i << endl;
+  		return 0;
+  	}
+  }
+  cout << 0 << endl;
 }

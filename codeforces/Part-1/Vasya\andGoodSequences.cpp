@@ -12,7 +12,7 @@
 #define FI first
 #define SE second
 
-const int MAX = 2e5+7;
+const int MAX = 3e5+7;
 /*
 //D-S-U
 int root(int v){return par[v] < 0 ? v : (par[v] = root(par[v]));}
@@ -28,7 +28,17 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+ll arr[MAX];
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  for(int i=0;i<n;i++)
+  {
+  	ll a;
+  	cin >> a;
+  	int val = __builtin_popcount(a);
+  	arr[i] = val%2;
+  }
 }

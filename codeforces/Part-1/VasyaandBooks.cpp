@@ -27,8 +27,30 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+int a[MAX+5],idx[MAX+5];
 int main()
 {
   sync;
+  int n,b;
+  cin >> n;
+  for(int i=0;i<n;i++)
+  {
+  	cin >> a[i];
+  	idx[a[i]] = i;
+  }
+  int last = -1;
+  for(int i=0;i<n;i++)
+  {
+  	cin >> b;
+  	if(idx[b] <= last)
+  	{
+  		cout << 0 << " ";
+  	}
+  	else
+  	{
+  		cout << idx[b] - last << " ";
+  		last = idx[b];
+  	}
+
+  }
 }

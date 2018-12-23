@@ -31,4 +31,28 @@ using namespace std;
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  int ax,ay,bx,by,cx,cy;
+  cin >> ax >> ay >> bx>> by>> cx >> cy;
+  if(bx < ax && by < ay && cx<ax && cy < ay)
+  {
+  	cout << "YES" << endl;
+  }
+  else if(bx < ax && by >ay && cx<ax && cy > ay)
+  {
+  	cout << "YES" << endl;
+  }
+  else if(bx > ax && by < ay && cx>ax && cy < ay)
+  {
+  	cout << "YES" << endl;
+  }
+  else if(bx > ax && by > ay && cx>ax && cy > ay)
+  {
+  	cout << "YES" << endl;
+  }
+  else
+  {
+  	cout << "NO" << endl;
+  }  
 }

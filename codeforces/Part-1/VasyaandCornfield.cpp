@@ -31,4 +31,20 @@ using namespace std;
 int main()
 {
   sync;
+  int n,d;
+  cin >> n >> d;
+  int x1 = n-d,y1=n;
+  int x2 = n,y2=n-d;
+  int q;
+  cin >> q;
+  while(q--)
+  {
+  	int a,b;
+  	cin >> a >> b;
+  	if(a+b>=d && a+b<=2*n-d && b-a<=d && b-a>=-1*d)
+  		cout << "YES" << endl;
+  	else
+  		cout << "NO" << endl;
+  }
+  
 }

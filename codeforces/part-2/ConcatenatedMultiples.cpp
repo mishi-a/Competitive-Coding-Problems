@@ -28,7 +28,38 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+int arr[MAX];
+vector<map<int,int> > v(11); 
+int getDigit(int num)
+{
+	int cnt=0;
+	while(num)num=num/10,cnt++;
+	return cnt;
+}
 int main()
 {
   sync;
+  int n,k;
+  cin >> n >> k;
+  for(int i=0;i<n;i++)
+  	cin >> arr[i];
+  for(int i=0;i<n;i++)
+  {
+  	v[getDigit(arr[i])][arr[i]%k]++;
+  }
+  ll ans = 0;
+  for(int i=0;i<n;i++)
+  {
+  	unsigned ll num = arr[i];
+  	int len = getDigit(arr[i]) ;
+  	for(int j=1;j<=10;j++)
+  	{
+  		num = num*10;
+  		int req = (k-(num%k))%k;
+  		ans = ans + v[j][req];
+  		if(len == j && req == (arr[i]%k))
+  			ans--;
+  	}
+  }
+  cout << ans << endl;
 }

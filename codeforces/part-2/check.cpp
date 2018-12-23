@@ -27,8 +27,41 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
+ll a[7005];
 
 int main()
 {
   sync;
+  ll t,tot=0;
+  cin >> t;
+  while(t--)
+  {
+  	tot++;
+  	ll n;
+  	cin >> n;
+  	for(int i=0;i<n;i++)
+  		cin >> a[i];
+  	sort(a,a+n);
+  	ll ans = 0;
+  	for(int i=0;i<n;i++)
+  	{
+  		for(int j=i+1;j<n;j++)
+  		{
+  			for(int k=j+1;k<n;k++)
+  			{
+  				if(a[k] == a[i]*a[j])
+  				{
+  					ans++;
+  				}	
+  				else if(a[i] == a[k]*a[j])
+  				{
+  					ans++;
+  				}
+  				else if(a[j] == a[k]*a[i])
+  					ans++;
+  			}
+  		}
+  	}
+  	cout << "Case #" << tot << ": " << ans << endl;
+  }
 }

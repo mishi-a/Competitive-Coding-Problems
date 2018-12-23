@@ -31,4 +31,15 @@ using namespace std;
 int main()
 {
   sync;
+  int t;
+  cin >> t;
+  ll s,a,b,c;
+  while(t--)
+  {
+  	cin >> s >> a >> b >> c;
+  	ll tot = (s/c) + ((s/c)/a)*b;
+  	cout <<  tot << endl;
+  }
+
+  
 }

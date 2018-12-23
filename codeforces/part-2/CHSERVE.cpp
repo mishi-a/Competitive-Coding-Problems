@@ -31,4 +31,17 @@ using namespace std;
 int main()
 {
   sync;
+  int t;
+  cin >> t;
+  while(t--)
+  {
+  	int p1,p2,k;
+  	cin >> p1 >> p2 >> k;
+  	int tot = p1+p2;
+  	if(tot%(2*k)<k)
+  		cout << "CHEF" << endl;
+  	else
+  		cout << "COOK" << endl;
+  }
+  
 }

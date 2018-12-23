@@ -31,4 +31,11 @@ using namespace std;
 int main()
 {
   sync;
+  ll n,m;
+  cin >> n >> m;
+  ll mux = ceil((1+sqrt(1+8*m))/2.0);
+  {
+  	cout << max(0,n-2*m) <<" " << max(0,n-mux);
+  } 
+  
 }

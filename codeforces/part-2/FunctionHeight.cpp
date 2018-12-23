@@ -12,7 +12,7 @@
 #define FI first
 #define SE second
 
-const int MAX = 2e5+7;
+const int MAX = 1e5;
 /*
 //D-S-U
 int root(int v){return par[v] < 0 ? v : (par[v] = root(par[v]));}
@@ -27,8 +27,47 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
+ll n,k;
 
+bool check(ll mid)
+{
+	//cout << mid << endl;
+	if(n%2 == 1)
+	{
+		if((long double)mid*(n) >= k )
+		{
+			return true;
+		}
+	}
+	else
+	{
+		if((long double)mid*(n)+ceil((mid/2)) >= k )
+			return true;
+	}
+	return false;
+}
+
+ll solve()
+{
+	ll l = 1,r = 1e18;
+	ll ans = LLONG_MAX;
+	while(l<=r)
+	{
+		ll mid = (l-r)/2+r;
+		//cout << l << " " << r << " " << mid << endl;
+		if(check(mid))
+		{
+			ans = min(mid,ans);
+			r = mid-1;
+		}
+		else
+			l = mid+1;
+	}	
+	return ans;
+}
 int main()
 {
   sync;
+  cin >> n >> k;
+  cout << solve() << endl;
 }

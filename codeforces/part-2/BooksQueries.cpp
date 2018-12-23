@@ -27,8 +27,49 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+map<int,int> mp;
 int main()
 {
   sync;
+  int t;
+  cin >> t;
+  int mun = INT_MAX,mux=INT_MAX;
+  while(t--)
+  {
+  	char ch;
+  	int n;
+  	cin >> ch >> n;
+  	if(ch == 'L')
+  	{
+  		if(mun ==INT_MAX)
+  		{
+  			mun=0,mux=0;
+  			mp[n] = mun;
+  		}
+  		else
+  		{
+  			mun--;
+  			mp[n]=mun;
+  		}
+
+  	}
+  	else if(ch == 'R')
+  	{
+  		if(mun ==INT_MAX)
+  		{
+  			mun=0,mux=0;
+  			mp[n] = mun;
+  		}
+  		else
+  		{
+  			mux++;
+  			mp[n]=mux;
+  		}
+  	}
+  	else
+  	{
+  		cout << min(abs(mp[n]-mun),abs(mux-mp[n]))<<endl;
+  	}
+
+  }
 }

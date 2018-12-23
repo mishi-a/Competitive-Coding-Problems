@@ -31,4 +31,17 @@ using namespace std;
 int main()
 {
   sync;
+  ll la,ra,ta,lb,rb,tb;
+  cin >> la >> ra >> ta >> lb >> rb >> tb;
+  ll ans = max(0*1LL,lb-la+ra-rb);
+  cerr << ans << endl;
+  ans = max(ans,rb-la+ra-lb);
+  cerr << ans << endl;
+  if(ra-rb+lb-la>=0)
+  	ans = max(ans,rb-lb+1);
+  cerr << ans << endl;
+  if(rb-ra+la-lb>=0)
+  	ans = max(ans,rb-lb+1);
+  cerr << ans << endl;
+  cout << ans << endl;
 }

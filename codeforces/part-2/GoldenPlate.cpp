@@ -31,4 +31,27 @@ using namespace std;
 int main()
 {
   sync;
+  int w,h,k;
+  cin >> w >> h >> k;
+  int ans = 0;
+  for(int i=0;i<k;i++)
+  {
+  	
+  	if(w<=0 || h<=0)
+  		break;
+  	if(w == 1)
+  	{
+  		ans+=h;
+  		continue;
+  	}
+  	if(h == 1)
+  	{
+  		ans+=w;
+  		continue;
+  	}
+  	ans += w+2*(h-1)+(w-2);
+  	w = w-4;
+  	h = h-4;
+  }
+  cout << ans << endl;
 }

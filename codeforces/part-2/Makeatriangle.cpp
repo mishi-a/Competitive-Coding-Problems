@@ -27,8 +27,13 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+vector<int> v;
 int main()
 {
   sync;
+  int a,b,c;
+  cin >> a >> b >> c;
+  v.pb(a),v.pb(b),v.pb(c);
+  sort(v.begin(),v.end());
+  cout << max(0,v[2]+1-(v[0]+v[1])) << endl;
 }

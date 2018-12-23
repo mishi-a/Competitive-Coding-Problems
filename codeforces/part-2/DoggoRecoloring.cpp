@@ -12,23 +12,46 @@
 #define FI first
 #define SE second
 
-const int MAX = 2e5+7;
 /*
 //D-S-U
 int root(int v){return par[v] < 0 ? v : (par[v] = root(par[v]));}
-void merge(int x,int y){  //  x and y are some tools (vertices)
+void merge(int x,int y){	//	x and y are some tools (vertices)
         if((x = root(x)) == (y = root(y))     return ;
-  if(par[y] < par[x]) // balancing the height of the tree
-    swap(x, y);
-  par[x] += par[y];
-  par[y] = x;
+	if(par[y] < par[x])	// balancing the height of the tree
+		swap(x, y);
+	par[x] += par[y];
+	par[y] = x;
 }
 */
 
 
 using namespace std;
 
+int arr[30];
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+  for(int i=0;i<n;i++)
+  {
+  	arr[s[i]-'a']++;
+  }
+  if(n == 1)
+  {
+  	cout << "Yes" << endl;
+  	return 0;
+  }
+  for(int i=0;i<26;i++)
+  {
+  	if(arr[i]>=2)
+  	{
+  		cout << "Yes" << endl;
+  		return 0;
+  	}
+  }
+  cout << "No" << endl;
+
 }

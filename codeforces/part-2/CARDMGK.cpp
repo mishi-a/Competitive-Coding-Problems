@@ -28,7 +28,40 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+void solve()
+{
+	int n;
+	cin >> n;
+	int a,last,first;
+	cin >> a;
+	last = a,first=a;
+	int dec = 0;
+	for(int i=1;i<n;i++)
+	{
+		cin >> a;
+		if(a < last)
+			dec++;
+		last = a;
+	}
+	if(dec>1)
+	{
+		cout << "NO" << endl;
+		return ;
+	}
+	//cerr << dec << endl;
+	if(last<=first || dec == 0)
+		cout << "YES" << endl;
+	else
+		cout << "NO" << endl;
+}
+
 int main()
 {
   sync;
+  int t;
+  cin >> t;
+  while(t--)
+  {
+  	solve();
+  }
 }

@@ -31,4 +31,10 @@ using namespace std;
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+  sort(s.begin(),s.end());
+  cout << s << endl;	  
 }

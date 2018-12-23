@@ -31,4 +31,29 @@ using namespace std;
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  if(n == 3)
+  	cout << "1 1 3";
+  else if (n==2)
+  	cout << "1 2";
+  else if(n == 1)
+  	cout << "1";
+  if(n>3)
+  {
+  	for(int i=1;i<=n;i+=2)
+  		cout << 1 << " " ;
+  	for(int j=2;j<=n;j=j*2)
+  	{
+  		for(int i=j;i<=n;i+=2*j)
+  		{
+  			if(n/j == 3)
+  			{
+  				cout << j << " " << i << " " << i*3 << endl;
+  				return 0;
+  			}
+  			cout << j << " " ;
+  		}
+  	}
+  }
 }

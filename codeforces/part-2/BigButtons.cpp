@@ -27,8 +27,44 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
+ll power(ll n,ll p)
+{
+	if(p == 0) return 1;
+	ll ans = 1;
+	if(p%2) ans = ans*n;
+	return ans*power(n,p/2)*power(n,p/2);
+}
 
 int main()
 {
   sync;
+  int t,tot=1;
+  cin >> t;
+  while(t--)
+  {
+  	cout << "Case #"<<tot<< ": ";
+  	tot++;
+  	int n,p;
+  	cin >> n >> p;
+  	ll ans = power(2,n);
+  	vector<string> v;
+  	for(int i=0;i<p;i++)
+  	{
+  		string s;
+  		cin >> s;
+  		v.pb(s);
+  	}
+  	sort(v.begin(),v.end());
+  	int start = 0;
+  	while(start<v.size())
+  	{
+  		int end=start+1;
+  		while(end<v.size() && v[start] == v[end].substr(0,v[start].size()))
+  			end++;
+  		ans-=power(2,n-v[start].size());
+  		start = end;
+  	}
+  	cout << ans << endl;
+
+  }
 }

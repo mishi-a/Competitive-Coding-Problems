@@ -31,4 +31,23 @@ using namespace std;
 int main()
 {
   sync;
+  ll t;
+  cin >> t;
+  while(t--)
+  {
+  	ll n;
+  	cin >> n;
+  	//cerr << n << endl;
+  	ll ans = 1;
+  	for(ll i=0;i<=31;i++)
+  	{
+  		if((n&(1<<i)))
+  		{
+  			ans = ans*2;
+  			//cerr << ans << endl;
+  		}
+  	}
+  	cout << ans << endl;
+  }
+  
 }

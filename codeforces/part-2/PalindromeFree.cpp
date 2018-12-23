@@ -12,7 +12,6 @@
 #define FI first
 #define SE second
 
-const int MAX = 2e5+7;
 /*
 //D-S-U
 int root(int v){return par[v] < 0 ? v : (par[v] = root(par[v]));}
@@ -31,4 +30,37 @@ using namespace std;
 int main()
 {
   sync;
+  string s;
+  cin >> s;
+  int ans = 0;
+  int done[305]={0};
+  for(int i=0;i<s.size();i++)
+  {
+  	if(done[i])continue;
+  	int j=i+1;
+  	int cnt=1;
+  	while(j<s.size() && s[j]==s[i])
+  	{
+  		//cout << i << endl;
+  		cnt++;
+  		i=j;
+  		j++;
+  	}
+  	if(cnt!=1)
+  	{
+  		ans = ans + ceil(cnt/2.0);
+  		//cout << ans << " gg" << endl;
+  		if(cnt%2==0&&cnt>2)
+  			ans++;
+
+  		continue;
+  	}
+  	if(i+2<s.size() && s[i]==s[i+2])
+  	{
+  		done[i+2]=1;
+  		ans++;
+  	}
+
+  }
+  cout << ans << endl;
 }

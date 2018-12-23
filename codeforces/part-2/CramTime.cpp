@@ -28,12 +28,56 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+ll fi[MAX],se[MAX];
+map<ll,ll> mp; 
 int main()
 {
   sync;
-  srand(10);
-  cout << 1 << endl << 100000 << endl;
-  for(int i=0;i<100000;i++)
-  	cout << rand()%10 << " ";
+  ll a,b;
+  cin >> a >> b;
+  ll sum = 0,rem = 0,idx = 0;
   
+  for(ll i=1;i<=1e5;i++)
+  {
+  	sum+=i;
+  	if(sum > a)
+  	{
+  		rem = a - (sum-i);
+  		break;
+  	}
+  	fi[idx] = i;
+  	idx++;
+  }
+  ll len = idx;
+  idx--;
+  while(rem > 0 && idx>=0)
+  {
+  	fi[idx]++;
+  	rem--;
+  	idx--;
+  }
+  for(int i=0;i<len;i++)
+  	mp[fi[i]]++;
+  sum = 0,idx=0;
+  for(ll i = 1;i<=1e6;i++)
+  {
+  	if(mp[i] == 0)
+  	{
+  		sum += i;
+  		if(sum > b)
+  			break;
+  		se[idx] = i;
+  		idx++;
+
+  	}
+  }
+  cout << len << endl;
+  for(int i=0;i<len;i++)
+  	cout << fi[i] << " ";
+  cout << endl;
+  cout << idx << endl;
+  for(int i=0;i<idx;i++)
+  	cout << se[i] << " ";
+  cout << endl;
+
 }

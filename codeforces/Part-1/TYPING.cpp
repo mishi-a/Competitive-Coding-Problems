@@ -28,7 +28,58 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+map<string,int> mp;
+map<char,int> mp1;
+int get(string s)
+{
+	int ans = 2;
+	int cHand = 0;
+	if(mp1[s[0]]) cHand = 1;
+	for(int i=1;i<s.size();i++)
+	{
+		if(mp1[s[i]]!=cHand)
+		{
+			ans+=2;
+			cHand = mp1[s[i]];
+		}
+		else
+			ans+=4;
+	}
+	return ans;
+}
+
+int solve()
+{
+	int n;
+	string s;
+	cin >> n;
+	int ans = 0;
+	for(int i=0;i<n;i++)
+	{
+		cin >> s;
+		int val = get(s);
+		if(mp[s])
+		{
+			ans += val/2;
+		}
+		else
+			ans+=val;
+		mp[s] = 1;
+		//cerr << val << " " << ans << endl;
+	}
+	return ans;
+}
+
 int main()
 {
   sync;
+  int t;
+  cin >> t;
+  mp1['d'] = mp1['f'] = 1;
+  while(t--)
+  {
+  	cout << solve() << endl;
+  	mp.clear();
+  }
+  
 }

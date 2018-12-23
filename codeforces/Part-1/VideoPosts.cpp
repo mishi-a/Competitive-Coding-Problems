@@ -27,8 +27,42 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+int a[MAX];
 int main()
 {
   sync;
+  int n,k;
+  cin >> n >> k;
+  int sum = 0;
+  for(int i=0;i<n;i++) cin >> a[i],sum+=a[i];
+  	if(sum%k !=0)
+  	{
+  		cout << "No" << endl;
+  		return 0;
+  	}
+  vector<int> v;
+  int t = 0,last = 0;
+  for(int i=0;i<n;i++)
+  {
+  	t+=a[i];
+  	if(t == sum/k)
+  	{
+  		v.pb(i-last+1);
+  		last = i+1;
+  		t = 0;
+  	}
+  	else if(t > sum/k)
+  	{
+  		cout << "No" << endl;
+  		return 0;
+  	}
+  }
+  if(t!=0)
+  {
+  	cout << "No" << endl;
+  		return 0;
+  }
+  cout << "Yes" << endl;
+  for(int i=0;i<v.size();i++)
+  	cout << v[i] << " ";
 }

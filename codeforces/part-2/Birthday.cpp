@@ -31,4 +31,23 @@ using namespace std;
 int main()
 {
   sync;
+  ll n,m,k,l;
+  cin >> n >> m >> k >> l;
+  if(k+l>n)
+  {
+  	//cerr << "hi";
+  	cout << -1 << endl;
+  }
+  else
+  {
+  	ll ans = (k+l)/m + ((k+l)%m != 0);
+  	//cerr << ans << endl;
+  	if(m > n/ans)
+  	{
+  		cout << -1 << endl;
+  		return 0;
+  	}
+  	cout << ans << endl;
+  }
+  
 }

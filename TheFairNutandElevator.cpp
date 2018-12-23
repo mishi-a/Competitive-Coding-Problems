@@ -27,8 +27,22 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+int a[105];
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  for(int i=0;i<n;i++) cin>>a[i];
+  int ans = INT_MAX;
+  for(int j=0;j<n;j++)
+  {
+  	int res = 0;
+  	for(int i=0;i<n;i++)
+  	{
+  		res += a[i]*4*max(i,j);
+  	}
+  	ans = min(res,ans);
+  }
+  cout << ans << endl;
 }

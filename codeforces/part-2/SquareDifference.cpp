@@ -28,7 +28,35 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+int check(ll x)
+{
+	for(ll i=2;i*i<=x;i++)
+	{
+		if(x%i == 0)
+			return 0;
+	}
+	return 1;
+}
 int main()
 {
   sync;
+  int t;
+  cin >> t;
+  while(t--)
+  {
+  	ll a,b;
+  	cin >> a >> b;
+  	if(a-b !=1 && a+b!=1)
+  	{
+  		cout << "NO" << endl;
+  	}
+  	else if(check(a-b) && check(a+b))
+  	{
+  		cout << "YES" << endl;
+  	}
+  	else
+  	{
+  		cout << "NO" << endl;
+  	}
+  }
 }

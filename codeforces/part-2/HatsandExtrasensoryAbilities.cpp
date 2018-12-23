@@ -31,4 +31,38 @@ using namespace std;
 int main()
 {
   sync;
+  int n;
+  cin >> n;
+  cout << 0  << " " << 1 << endl;
+  cout << flush;
+  string s;
+  int tmp  = -1;
+  cin >> s;
+  if(s == "black")
+  	tmp=1;
+  else
+  	tmp = 0;
+  int l=1,r=1e9;
+  for(int i=0;i<n-1;i++)
+  {
+  	int mid = (l+r)/2;
+  	cout << mid << " " << 1 << endl;
+  	cout << flush;
+  	cin >> s;
+  	if(s == "black")
+  	{
+  		if(tmp == 1)
+  			l = mid+1;
+  		else
+  			r = mid-1;
+  	}
+  	else
+  	{
+  		if(tmp == 1)
+  			r = mid-1;
+  		else
+  			l = mid+1;
+  	}
+  }
+  cout << l << " " << 0 << " " << r << " " << 2;
 }

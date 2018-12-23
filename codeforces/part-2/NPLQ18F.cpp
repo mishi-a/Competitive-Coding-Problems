@@ -31,4 +31,20 @@ using namespace std;
 int main()
 {
   sync;
+  int t;
+  cin >> t;
+  while(t--)
+  {
+  	string s;
+  	cin >> s;
+  	int arr[26]={0};
+  	for(int i=0;i<s.size();i++)
+  	{
+  		arr[s[i]-'a']++;
+  	}
+  	int mux = -1;
+  	for(int i=0;i<26;i++)
+  		mux = max(mux,arr[i]);
+  	cout << s.size()-mux << endl;
+  }
 }

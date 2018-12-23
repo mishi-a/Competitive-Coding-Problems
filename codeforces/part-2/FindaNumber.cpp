@@ -28,7 +28,46 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 using namespace std;
 
+struct state
+{
+	string st;
+	int rem;
+	int sum;
+	state(string _st,int _rem,int _sum)
+	{
+		st = _st;
+		rem = _rem;
+		sum = _sum;
+	}
+};
+
 int main()
 {
   sync;
+  int d,s;
+  cin >> d >> s;
+  queue <state> q;
+  q.push(state("",0,0));
+  while(!q.empty())
+  {
+  	state st = q.front();
+  	q.pop();
+  	if(st.sum>s)
+  	{
+  		cout << -1 << endl;
+  		return 0;
+  	}
+  	if(st.rem == 0 && st.sum == s)
+  	{
+  		cout << st.st << endl;
+  		return 0;
+  	}
+  	for(int i=0;i<10;i++)
+  	{
+  		string a = st.st + (char)(i+'0');
+  		int r = ((st.rem*10)+i)%d;
+  		int t = st.sum + i;
+  		q.push(state(a,r,t));
+  	}
+  } 
 }

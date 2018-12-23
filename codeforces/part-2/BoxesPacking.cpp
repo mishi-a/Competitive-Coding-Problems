@@ -27,8 +27,30 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+int arr[MAX];
 int main()
 {
   sync;
+  ll n,m,k;
+  cin >> n >> m >> k;
+  for(int i=0;i<n;i++)
+  	cin >>arr[i];
+  int cBox = 0,temp = k,ans=0;
+  for(int i=n-1;i>=0;i--)
+  {
+  	if(arr[i]<=temp)
+  	{
+  		ans++;
+  		temp-=arr[i];
+  	}
+  	else
+  	{
+  		cBox++;
+  		if(cBox == m)
+  			break;
+  		temp = k;
+  		i++;
+  	}
+  }
+  cout << ans << endl;
 }

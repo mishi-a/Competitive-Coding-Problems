@@ -31,4 +31,29 @@ using namespace std;
 int main()
 {
   sync;
+  ll n;
+  cin >> n;
+  if(n%10 == 0)
+  {
+  	ll res = n-1;
+  	ll sum = 0;
+  	while(res!=0)
+  	{
+  		sum+=(res%10);
+  		res/=10;
+  	}
+  	cout << sum+1 << endl;
+  }
+  else
+  {
+  	ll r = n%10+1;
+  	ll sum = 0;
+  	n = n-(n%10+1);
+  	while(n!=0)
+  	{
+  		sum+=(n%10);
+  		n/=10;
+  	}
+  	cout << sum+r << endl;
+  }
 }

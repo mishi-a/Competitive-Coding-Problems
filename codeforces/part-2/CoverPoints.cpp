@@ -27,8 +27,32 @@ void merge(int x,int y){  //  x and y are some tools (vertices)
 
 
 using namespace std;
-
+int arr[MAX];
+set<ll> s;
 int main()
 {
   sync;
+  ll n;
+  cin >> n;
+  for(int i=0;i<n;i++)
+  {
+  	ll a,b;
+  	cin >> a>>b;
+  	s.insert(a+b);
+  }
+  ll l = 1,r=2e9+2;
+  ll ans = 2e9+2;
+  while(l<=r)
+  {
+  	ll mid = (l+r)/2;
+  	auto itr = upper_bound(s.begin(),s.end(),mid);
+  	if(itr == s.end())
+  	{
+  		ans = min(ans,mid);
+  		r = mid-1;
+  	}
+  	else
+  		l = mid+1;
+  }
+  cout << ans << endl;
 }
